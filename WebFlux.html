@@ -1,0 +1,409 @@
+<html><head><base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Flux | Soluções Digitais & Tráfego Pago</title>
+
+<style>
+:root {
+  --primary: #2851E3;
+  --secondary: #FF6B6B;
+  --dark: #1A1B1E;
+  --light: #FFFFFF;
+  --gray: #F5F5F5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+}
+
+.navbar {
+  padding: 1rem 5%;
+  background: var(--light);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  padding: 10rem 5% 8rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #1a237e 100%);
+  color: var(--light);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,229.3C672,224,768,192,864,181.3C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  opacity: 0.1;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: var(--secondary);
+  color: var(--light);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+}
+
+.services {
+  padding: 5rem 5%;
+  background: var(--gray);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.contact {
+  padding: 5rem 5%;
+  background: var(--gray);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.contact-card a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.contact-card a:hover {
+  color: var(--secondary);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-content">
+    <a href="#home" class="logo">
+      <i class="fas fa-bolt"></i>
+      Web Flux
+    </a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Serviços</a>
+      <a href="#about">Sobre</a>
+      <a href="#contact">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Transforme sua presença digital com a Web Flux</h1>
+    <p>Somos especialistas em desenvolvimento web e gestão de tráfego pago. Maximize seus resultados com nossas soluções personalizadas.</p>
+    <div class="hero-buttons">
+      <a href="https://api.whatsapp.com/send?phone=5551983329822" class="btn btn-primary">Fale Conosco no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-title">
+    <h2>Nossos Serviços</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-code"></i>
+      </div>
+      <h3>Desenvolvimento Web</h3>
+      <p>Sites profissionais e responsivos que convertem visitantes em clientes.</p>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-ad"></i>
+      </div>
+      <h3>Tráfego Pago</h3>
+      <p>Campanhas otimizadas para maximizar seu ROI em Google Ads e Facebook Ads.</p>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <h3>Analytics & Relatórios</h3>
+      <p>Acompanhamento detalhado de métricas e resultados em tempo real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-title">
+    <h2>Como Trabalhamos</h2>
+  </div>
+  <div style="padding: 2rem 5%; background: var(--light); max-width: 1200px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div style="padding: 2rem; border-radius: 10px; background: var(--gray);">
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">Nosso Processo</h3>
+        <p style="margin-bottom: 1rem;">Iniciamos com uma análise detalhada do seu negócio e objetivos. Nossa equipe desenvolve uma estratégia personalizada, combinando desenvolvimento web e tráfego pago para maximizar seus resultados.</p>
+        <p>Utilizamos as mais recentes tecnologias e práticas de mercado para garantir sites rápidos, seguros e otimizados para conversão.</p>
+      </div>
+      
+      <div style="padding: 2rem; border-radius: 10px; background: var(--gray);">
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">Gestão de Tráfego</h3>
+        <p style="margin-bottom: 1rem;">Nossas campanhas de tráfego pago são cuidadosamente planejadas e otimizadas diariamente. Monitoramos cada centavo investido para garantir o melhor retorno sobre investimento.</p>
+        <p>Fornecemos relatórios detalhados e reuniões de acompanhamento regulares para manter você atualizado sobre o desempenho.</p>
+      </div>
+
+      <div style="padding: 2rem; border-radius: 10px; background: var(--gray);">
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">Formas de Pagamento</h3>
+        <p style="margin-bottom: 1rem;">Facilitamos seu investimento aceitando diversas formas de pagamento:</p>
+        <ul style="list-style: none; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-qrcode" style="color: var(--primary); margin-right: 0.5rem;"></i> PIX</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fab fa-bitcoin" style="color: var(--primary); margin-right: 0.5rem;"></i> Bitcoin (BTC)</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fab fa-ethereum" style="color: var(--primary); margin-right: 0.5rem;"></i> Ethereum (ETH)</li>
+          <li><i class="fas fa-coins" style="color: var(--primary); margin-right: 0.5rem;"></i> Outras criptomoedas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-title">
+    <h2>Entre em Contato</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>Email</h3>
+      <a href="mailto:contato@webflux.com.br">contato@webflux.com.br</a>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <h3>Instagram</h3>
+      <a href="https://instagram.com/webfluxbr" target="_blank">@webfluxbr</a>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3>WhatsApp</h3>
+      <a href="https://api.whatsapp.com/send?phone=5551983329822" target="_blank">(51) 98332-9822</a>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.style.background = '#fff';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        }
+    });
+});
+</script>
+
+</body></html>
